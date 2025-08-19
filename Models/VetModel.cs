@@ -8,7 +8,7 @@ namespace Supabase_Minimal_API.Models;
 public class VetModel : BaseModel
 {
     [PrimaryKey("id")]
-    public  Guid Id { get; set; }
+    public Guid Id { get; set; }
 
     [Column("title")]
     public string Title { get; set; }
