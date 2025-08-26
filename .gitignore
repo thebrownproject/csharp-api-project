@@ -77,6 +77,8 @@ publish/
 .claude/
 .bmad-core/
 .serena/
+.mcp.json
+claude.md
 
 # Temporary folders
 tmp/
