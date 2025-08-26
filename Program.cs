@@ -1,55 +1,41 @@
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Supabase;
 
 namespace Supabase_Minimal_API;
 
-/// <summary>
-///  Program entry point. Runs the Program
-/// </summary>
 internal static class Program
 {
-    /// <summary>
-    /// Main entry point for the Program
-    /// </summary>
-    /// <param name="args">Any command line arguments called from the command line</param>
-    public static void Main(string[] args)
+    // TODO(human): Refactor the Main method to match teacher's structure
+    // Break it into: ConfigureWebAppBuilder, BuildWebApp, and update ConfigureSupabase
+    // Also update configuration keys to use "Supabase:Url" and "Supabase:Key"
+    private static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        // Add newtonsoft.Json package
-        builder.Services.AddControllers().AddNewtonsoftJson(Options =>
-        {
-            Options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-        });
+        bool useSwagger = builder.Configuration.GetValue<bool>("UseSwagger");
 
-        var config = builder.Configuration;
-        var useSwagger = config.GetValue<bool>("UseSwagger");
+        ConfigureWebAppBuilder(builder, useSwagger);
 
-        if (useSwagger)
-        {
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-        }
+        WebApplication app = BuildWebApp(builder, useSwagger);
 
-        ConfigureSupabase(builder.Services, config);
-
-        var app = builder.Build();
-
-        if (useSwagger)
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        app.MapControllers();
         app.Run();
-
     }
 
-    // Function to configure Supabase
+    private static void ConfigureWebAppBuilder(WebApplicationBuilder builder, bool useSwagger)
+    {
+        // Add controllers and configure JSON serialization
+        builder.Services.AddControllers().AddNewtonsoftJson(options => 
+        { 
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
+        });
+    }
+
+    private static WebApplication BuildWebApp(WebApplicationBuilder builder, bool useSwagger)
+    {
+        // TODO: Move app configuration here
+        return builder.Build();
+    }
+
     private static void ConfigureSupabase(IServiceCollection services, IConfiguration config)
     {
         services.AddScoped(_ =>
