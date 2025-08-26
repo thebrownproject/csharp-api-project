@@ -121,3 +121,4 @@
 /Users/fraserbrown/Documents/Programming/Kangan/OOP/min-api-project/obj/Debug/net9.0/min-api-project.pdb
 /Users/fraserbrown/Documents/Programming/Kangan/OOP/min-api-project/obj/Debug/net9.0/min-api-project.genruntimeconfig.cache
 /Users/fraserbrown/Documents/Programming/Kangan/OOP/min-api-project/obj/Debug/net9.0/ref/min-api-project.dll
+/Users/fraserbrown/Documents/Programming/Kangan/OOP/min-api-project/obj/Debug/net9.0/min-api-project.sourcelink.json
