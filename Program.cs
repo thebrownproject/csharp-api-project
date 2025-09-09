@@ -45,6 +45,14 @@ internal static class Program
         {
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSwaggerGen(options => {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {
+                    Title = "Shelter API",
+                    Version = "v1",
+                    Description = "API for the Shelter"
+                });
+            });
         }
     }
 
@@ -89,7 +97,10 @@ internal static class Program
         {
             // Enables Swagger
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Shelter API v1");
+            });
         }
 
         // Redirects to HTTPS
