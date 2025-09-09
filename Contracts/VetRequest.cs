@@ -1,5 +1,8 @@
-public class CreateVetRequest
+using Supabase_Minimal_API.Validation;
+
+public class VetRequest
 {
+    [AllowedValues(["Veterinary Doctor", "Veterinary Nurse", "Veterinary Technician", "Veterinary Assistant"])]
     public string Title { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }

@@ -7,6 +7,33 @@ namespace Supabase_Minimal_API.Models;
 [Table("vet")]
 public class VetModel : BaseModel
 {
+
+    public VetModel() {
+        Id = Guid.Empty;
+        Title = string.Empty;
+        FirstName = string.Empty;
+        LastName = string.Empty;
+        Email = string.Empty;
+        Phone = string.Empty;
+        ClinicName = string.Empty;
+        ClinicAddress = string.Empty;
+        CreatedAt = DateTime.MinValue;
+        UpdatedAt = DateTime.MinValue;
+    }
+    public VetModel(Guid id, VetRequest request)
+    {
+        Id = id;
+        Title = request.Title;
+        FirstName = request.FirstName;
+        LastName = request.LastName;
+        Email = request.Email;
+        Phone = request.Phone;
+        ClinicName = request.ClinicName;
+        ClinicAddress = request.ClinicAddress;
+        CreatedAt = request.CreatedAt;
+        UpdatedAt = request.UpdatedAt;
+    }
+
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
