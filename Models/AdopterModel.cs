@@ -46,8 +46,8 @@ public class AdopterModel : BaseModel
         HouseholdSize = request.HouseholdSize ?? 0;
         HasOtherPets = request.HasOtherPets;
         AdoptionStatus = request.AdoptionStatus;
-        CreatedAt = request.CreatedAt;
-        UpdatedAt = request.UpdatedAt;
+        CreatedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
     }
 
 [PrimaryKey("id")]
@@ -60,22 +60,22 @@ public string FirstName { get; set; }
 public string LastName { get; set; }
 
 [Column("email")]
-public string Email { get; set; }
+public string? Email { get; set; }
 
 [Column("phone")]
 public string Phone { get; set; }
 
 [Column("address_line_1")]
-public string AddressLine1 { get; set; }
+public string? AddressLine1 { get; set; }
 
 [Column("city")]
-public string City { get; set; }
+public string? City { get; set; }
 
 [Column("state")]
-public string State { get; set; }
+public string? State { get; set; }
 
 [Column("postal_code")]
-public string PostalCode { get; set; }
+public string? PostalCode { get; set; }
 
 [Column("date_of_birth")]
 public DateTime DateOfBirth { get; set; }

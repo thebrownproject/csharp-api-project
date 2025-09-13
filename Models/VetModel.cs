@@ -31,8 +31,8 @@ public class VetModel : BaseModel
         Phone = request.Phone;
         ClinicName = request.ClinicName;
         ClinicAddress = request.ClinicAddress;
-        CreatedAt = request.CreatedAt;
-        UpdatedAt = request.UpdatedAt;
+        CreatedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
     }
 
     [PrimaryKey("id")]
