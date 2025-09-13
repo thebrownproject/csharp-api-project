@@ -1,6 +1,7 @@
 // Controller for managing vet contacts
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
+using min_api_project.Contracts;
 
 namespace Supabase_Minimal_API.Models;
 

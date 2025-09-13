@@ -28,11 +28,11 @@ public class AnimalModel : BaseModel
     {
         Id = id;
         Name = request.Name;
-        DateOfBirth = request.DateOfBirth;
+        DateOfBirth = request.DateOfBirth ?? DateTime.MinValue;
         Species = request.Species;
         Breed = request.Breed;
         FurColour = request.FurColour;
-        WeightKg = request.WeightKg;
+        WeightKg = request.WeightKg ?? 0;
         ArrivalDate = request.ArrivalDate;
         Neutered = request.Neutered;
         AdoptionStatus = request.AdoptionStatus;
@@ -40,8 +40,8 @@ public class AnimalModel : BaseModel
         RfidTag = request.RfidTag;
         SpecialNeeds = request.SpecialNeeds;
         Description = request.Description;
-        CreatedAt = request.CreatedAt;
-        UpdatedAt = request.UpdatedAt;
+        CreatedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
     }
 
     [PrimaryKey("id")]

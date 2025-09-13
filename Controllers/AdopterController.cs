@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Supabase;
 using Supabase.Postgrest.Responses;
 using Supabase_Minimal_API.Models;
+using min_api_project.Contracts;
 
 // Nominate the controller as an API controller
 [ApiController]

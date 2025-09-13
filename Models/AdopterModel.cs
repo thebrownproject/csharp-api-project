@@ -1,5 +1,6 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
+using min_api_project.Contracts;
 
 namespace Supabase_Minimal_API.Models;
 
@@ -41,8 +42,8 @@ public class AdopterModel : BaseModel
         City = request.City;
         State = request.State;
         PostalCode = request.PostalCode;
-        DateOfBirth = request.DateOfBirth;
-        HouseholdSize = request.HouseholdSize;
+        DateOfBirth = request.DateOfBirth ?? DateTime.MinValue;
+        HouseholdSize = request.HouseholdSize ?? 0;
         HasOtherPets = request.HasOtherPets;
         AdoptionStatus = request.AdoptionStatus;
         CreatedAt = request.CreatedAt;

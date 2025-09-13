@@ -8,18 +8,20 @@ public class HealthCheckRequest
     public required Guid AnimalId { get; set; }
     [Required]
     public required Guid VetId { get; set; }
-    public DateTime CheckDate { get; set; }
-    public string CheckType { get; set; }
-    public decimal WeightKg { get; set; }
-    public decimal TemperatureCelsius { get; set; }
-    public int HeartRate { get; set; }
-    public string ExaminationNotes { get; set; }
-    public string Diagnosis { get; set; }
-    public string TreatmentGiven { get; set; }
-    public string MedicationsPrescribed { get; set; }
-    public bool FollowUpRequired { get; set; }
-    public DateTime FollowUpDate { get; set; }
-    public string OverallHealthStatus { get; set; }
+    public DateTime CheckDate { get; set; } = DateTime.Today;
+    [Required]
+    public required string CheckType { get; set; }
+    public decimal? WeightKg { get; set; }
+    public decimal? TemperatureCelsius { get; set; }
+    public int? HeartRate { get; set; }
+    public string? ExaminationNotes { get; set; }
+    public string? Diagnosis { get; set; }
+    public string? TreatmentGiven { get; set; }
+    public string? MedicationsPrescribed { get; set; }
+    public bool FollowUpRequired { get; set; } = false;
+    public DateTime? FollowUpDate { get; set; }
+    [AllowedValues(["Excellent", "Good", "Fair", "Poor", "Critical"])]
+    public string OverallHealthStatus { get; set; } = "Good";
     public DateTime CreatedAt { get; set; }
 }
 
