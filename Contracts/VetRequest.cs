@@ -1,4 +1,6 @@
-using Supabase_Minimal_API.Validation;
+using System.ComponentModel.DataAnnotations;
+
+namespace min_api_project.Contracts;
 
 public class VetRequest
 {

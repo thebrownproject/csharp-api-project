@@ -1,4 +1,4 @@
-namespace Supabase_Minimal_API.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class AdopterRequest
 {
