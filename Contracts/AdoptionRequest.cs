@@ -16,7 +16,7 @@ public class AdoptionRequest
     public string ReturnReason { get; set; }
     [AllowedValues(["Active", "Returned", "Cancelled"])]
     public required string AdoptionStatus { get; set; }
-    public string Notes { get; set; }
+    public string? Notes { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
