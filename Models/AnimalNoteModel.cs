@@ -2,12 +2,13 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("animal_note")]
 public class AnimalNoteModel : BaseModel
 {
-    public AnimalNoteModel() {
+    public AnimalNoteModel()
+    {
         Id = Guid.Empty;
         AnimalId = Guid.Empty;
         UserId = Guid.Empty;
@@ -42,7 +43,7 @@ public class AnimalNoteModel : BaseModel
 
     [Column("note_content")]
     public string NoteContent { get; set; }
-    
+
     [Column("note_type")]
     public string NoteType { get; set; }
 

@@ -16,7 +16,7 @@ internal static class Program
 
         // Configures the builder with the necessary services
         bool useSwagger = builder.Configuration.GetValue<bool>("UseSwagger");
-        
+
         // Configures the web app builder
         ConfigureWebAppBuilder(builder, useSwagger);
 
@@ -31,10 +31,10 @@ internal static class Program
     private static void ConfigureWebAppBuilder(WebApplicationBuilder builder, bool useSwagger)
     {
         // Add controllers and configure JSON serialization
-        builder.Services.AddControllers().AddNewtonsoftJson(options => 
-        { 
+        builder.Services.AddControllers().AddNewtonsoftJson(options =>
+        {
             // Why? Ignores reference loops in JSON serialization
-            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; 
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         });
 
         // Configures the Supabase client
@@ -46,8 +46,10 @@ internal static class Program
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddSwaggerGen(options => {
-                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
                     Title = "Shelter API",
                     Version = "v1",
                     Description = "API for the Shelter"

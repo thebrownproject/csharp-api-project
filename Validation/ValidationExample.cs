@@ -7,14 +7,14 @@ public class ValidationStringLengthAttribute : ValidationAttribute // Custom val
     private int _allowedLength; // Maximum allowed string length
     private string _columnName; // Column name for error messages
 
-    public ValidationStringLengthAttribute( string columnName, int allowedLength) // Constructor
+    public ValidationStringLengthAttribute(string columnName, int allowedLength) // Constructor
     {
         _columnName = columnName; // Store column name
         _allowedLength = allowedLength; // Store max length
     }
 
     // Validation method
-    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext) 
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         if (value == null) // Check for null value
             return new ValidationResult("No value given");

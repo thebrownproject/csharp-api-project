@@ -19,7 +19,7 @@ public class ShiftRequest
     public string? Notes { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    
+
 }
 
 // CREATE TABLE shift (
@@ -35,7 +35,7 @@ public class ShiftRequest
 //     notes TEXT,
 //     created_at TIMESTAMP DEFAULT NOW(),
 //     updated_at TIMESTAMP DEFAULT NOW(),
-    
+
 //     -- Prevent double-booking
 //     UNIQUE(user_id, shift_date, shift_type)
 // );

@@ -2,14 +2,15 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("rfid_log")]
 public class RfidLogTableModel : BaseModel
 {
-    public RfidLogTableModel() {
+    public RfidLogTableModel()
+    {
         Id = Guid.Empty;
-        ScanTime = DateTime.MinValue;
+        ScanTime = DateTime.UtcNow;
         UserId = Guid.Empty;
         AnimalId = Guid.Empty;
         RfidTag = string.Empty;
@@ -19,7 +20,7 @@ public class RfidLogTableModel : BaseModel
     public RfidLogTableModel(Guid id, RfidLogRequest request)
     {
         Id = id;
-        ScanTime = request.ScanTime;
+        ScanTime = request.ScanTime ?? DateTime.UtcNow;
         UserId = request.UserId;
         AnimalId = request.AnimalId;
         RfidTag = request.RfidTag;
@@ -28,19 +29,19 @@ public class RfidLogTableModel : BaseModel
 
     [PrimaryKey("id")]
     public Guid Id { get; set; }
-    
+
     [Column("scan_time")]
-    public DateTime? ScanTime { get; set; }
-    
+    public DateTime ScanTime { get; set; }
+
     [Column("user_id")]
     public Guid? UserId { get; set; }
-    
+
     [Column("animal_id")]
     public Guid? AnimalId { get; set; }
-    
+
     [Column("rfid_tag")]
     public string? RfidTag { get; set; }
-    
+
     [Column("animal_note")]
     public Guid? AnimalNote { get; set; }
 }

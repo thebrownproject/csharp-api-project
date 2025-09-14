@@ -2,12 +2,13 @@ using min_api_project.Contracts;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("animal")]
 public class AnimalModel : BaseModel
 {
-    public AnimalModel() {
+    public AnimalModel()
+    {
         Name = string.Empty;
         DateOfBirth = null;
         Species = string.Empty;
@@ -28,7 +29,7 @@ public class AnimalModel : BaseModel
     {
         Id = id;
         Name = request.Name;
-        DateOfBirth = request.DateOfBirth.HasValue ? DateOnly.FromDateTime(request.DateOfBirth.Value) : DateOnly.MinValue;
+        DateOfBirth = request.DateOfBirth.HasValue ? DateOnly.FromDateTime(request.DateOfBirth.Value) : null;
         Species = request.Species;
         Breed = request.Breed;
         FurColour = request.FurColour;

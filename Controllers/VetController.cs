@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Supabase;
 using Supabase.Postgrest.Responses;
-using Supabase_Minimal_API.Models;
+using min_api_project.Models;
 using min_api_project.Contracts;
 
 // Marks it as an API controller with automatic model validation
@@ -26,7 +26,7 @@ public class VetController : ControllerBase
 
         // Inserts the vet variable into the database
         ModeledResponse<VetModel> response = await client.From<VetModel>().Insert(vet);
-        
+
         // Gets the new vet from the database
         VetModel newVet = response.Models.First();
         // Returns the new vet
@@ -59,7 +59,7 @@ public class VetController : ControllerBase
     {
         // Creates a new vet variable using the VetModel constructor
         VetModel vet = new VetModel(id, request);
-        
+
         // Updates the vet in the database
         ModeledResponse<VetModel> response = await client.From<VetModel>().Where(i => i.Id == id).Update(vet);
 

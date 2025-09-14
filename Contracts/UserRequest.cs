@@ -36,14 +36,14 @@ public class UserRequest
 //     state VARCHAR(50),
 //     postal_code VARCHAR(20),
 //     rfid_tag VARCHAR(50) UNIQUE,        -- For RFID access system
-    
+
 //     -- Volunteer-specific fields
 //     volunteer_start_date DATE,          -- Date volunteer started
 //     volunteer_end_date DATE,            -- Date volunteer stopped (NULL if active)
 //     is_admin BOOLEAN DEFAULT FALSE, -- Whether user is a volunteer
 //     is_active_volunteer BOOLEAN DEFAULT TRUE, -- Whether volunteer is currently active
 //     volunteer_notes TEXT,               -- General notes about the volunteer
-    
+
 //     created_at TIMESTAMP DEFAULT NOW(),
 //     updated_at TIMESTAMP DEFAULT NOW()
 // );

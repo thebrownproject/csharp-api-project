@@ -3,13 +3,14 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("vet")]
 public class VetModel : BaseModel
 {
 
-    public VetModel() {
+    public VetModel()
+    {
         Id = Guid.Empty;
         Title = string.Empty;
         FirstName = string.Empty;
@@ -60,8 +61,8 @@ public class VetModel : BaseModel
     public string? ClinicAddress { get; set; }
 
     [Column("created_at")]
-    public DateTime? CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     [Column("updated_at")]
-    public DateTime? UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
 }

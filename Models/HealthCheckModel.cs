@@ -2,12 +2,13 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("health_check")]
 public class HealthCheckModel : BaseModel
 {
-    public HealthCheckModel() {
+    public HealthCheckModel()
+    {
         Id = Guid.Empty;
         AnimalId = Guid.Empty;
         VetId = Guid.Empty;
@@ -24,6 +25,7 @@ public class HealthCheckModel : BaseModel
         FollowUpDate = null;
         OverallHealthStatus = string.Empty;
         CreatedAt = DateTime.MinValue;
+        UpdatedAt = DateTime.MinValue;
     }
 
     public HealthCheckModel(Guid id, HealthCheckRequest request)
@@ -41,11 +43,11 @@ public class HealthCheckModel : BaseModel
         TreatmentGiven = request.TreatmentGiven;
         MedicationsPrescribed = request.MedicationsPrescribed;
         FollowUpRequired = request.FollowUpRequired;
-        FollowUpDate = DateOnly.FromDateTime(request.FollowUpDate);
+        FollowUpDate = request.FollowUpDate.HasValue ? DateOnly.FromDateTime(request.FollowUpDate.Value) : null;
         OverallHealthStatus = request.OverallHealthStatus;
         CreatedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
     }
-    
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
@@ -93,6 +95,9 @@ public class HealthCheckModel : BaseModel
 
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
+
+    [Column("updated_at")]
+    public DateTime UpdatedAt { get; set; }
 }
 
 // CREATE TABLE health_check (

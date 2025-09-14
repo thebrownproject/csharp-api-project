@@ -2,12 +2,13 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 [Table("user")]
 public class UserModel : BaseModel
 {
-    public UserModel() {
+    public UserModel()
+    {
         Id = Guid.Empty;
         Email = string.Empty;
         FirstName = string.Empty;
@@ -35,14 +36,14 @@ public class UserModel : BaseModel
         FirstName = request.FirstName;
         LastName = request.LastName;
         Phone = request.Phone;
-        DateOfBirth = DateOnly.FromDateTime(request.DateOfBirth);
+        DateOfBirth = request.DateOfBirth != DateTime.MinValue ? DateOnly.FromDateTime(request.DateOfBirth) : DateOnly.MinValue;
         AddressLine = request.AddressLine;
         City = request.City;
         State = request.State;
         PostalCode = request.PostalCode;
         RfidTag = request.RfidTag;
-        VolunteerStartDate = DateOnly.FromDateTime(request.VolunteerStartDate);
-        VolunteerEndDate = DateOnly.FromDateTime(request.VolunteerEndDate);
+        VolunteerStartDate = request.VolunteerStartDate != DateTime.MinValue ? DateOnly.FromDateTime(request.VolunteerStartDate) : DateOnly.MinValue;
+        VolunteerEndDate = request.VolunteerEndDate != DateTime.MinValue ? DateOnly.FromDateTime(request.VolunteerEndDate) : DateOnly.MinValue;
         IsAdmin = request.IsAdmin;
         IsActiveVolunteer = request.IsActiveVolunteer;
         VolunteerNotes = request.VolunteerNotes;
@@ -52,25 +53,25 @@ public class UserModel : BaseModel
 
     [PrimaryKey("id")]
     public Guid Id { get; set; }
-    
+
     [Column("email")]
     public string Email { get; set; }
-    
+
     [Column("first_name")]
     public string? FirstName { get; set; }
-    
+
     [Column("last_name")]
     public string? LastName { get; set; }
-    
+
     [Column("phone")]
     public string? Phone { get; set; }
-    
+
     [Column("date_of_birth")]
     public DateOnly DateOfBirth { get; set; }
-    
+
     [Column("address_line")]
     public string AddressLine { get; set; }
-    
+
     [Column("city")]
     public string City { get; set; }
 
@@ -122,14 +123,14 @@ public class UserModel : BaseModel
 //     state VARCHAR(50),
 //     postal_code VARCHAR(20),
 //     rfid_tag VARCHAR(50) UNIQUE,        -- For RFID access system
-    
+
 //     -- Volunteer-specific fields
 //     volunteer_start_date DATE,          -- Date volunteer started
 //     volunteer_end_date DATE,            -- Date volunteer stopped (NULL if active)
 //     is_admin BOOLEAN DEFAULT FALSE, -- Whether user is a volunteer
 //     is_active_volunteer BOOLEAN DEFAULT TRUE, -- Whether volunteer is currently active
 //     volunteer_notes TEXT,               -- General notes about the volunteer
-    
+
 //     created_at TIMESTAMP DEFAULT NOW(),
 //     updated_at TIMESTAMP DEFAULT NOW()
 // );

@@ -2,14 +2,15 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 
 [Table("adoption")]
 public class AdoptionModel : BaseModel
 {
     // Constructor for the AdoptionModel
-    public AdoptionModel() {
+    public AdoptionModel()
+    {
         Id = Guid.Empty;
         AnimalId = Guid.Empty;
         AdopterId = Guid.Empty;
@@ -55,7 +56,7 @@ public class AdoptionModel : BaseModel
     public decimal AdoptionFee { get; set; }
 
     [Column("return_date")]
-    public DateTime? ReturnDate { get; set; }
+    public DateOnly? ReturnDate { get; set; }
 
     [Column("return_reason")]
     public string? ReturnReason { get; set; }

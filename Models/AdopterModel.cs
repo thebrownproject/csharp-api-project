@@ -2,7 +2,7 @@ using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
 
-namespace Supabase_Minimal_API.Models;
+namespace min_api_project.Models;
 
 
 // Selects the adopters table from the database
@@ -12,7 +12,8 @@ namespace Supabase_Minimal_API.Models;
 public class AdopterModel : BaseModel
 {
     // Constructor for the AdopterModel
-    public AdopterModel() {
+    public AdopterModel()
+    {
         Id = Guid.Empty;
         FirstName = string.Empty;
         LastName = string.Empty;
@@ -50,48 +51,48 @@ public class AdopterModel : BaseModel
         UpdatedAt = DateTime.UtcNow;
     }
 
-[PrimaryKey("id")]
-public Guid Id { get; set; }
+    [PrimaryKey("id")]
+    public Guid Id { get; set; }
 
-[Column("first_name")]
-public string FirstName { get; set; }
+    [Column("first_name")]
+    public string FirstName { get; set; }
 
-[Column("last_name")]
-public string LastName { get; set; }
+    [Column("last_name")]
+    public string LastName { get; set; }
 
-[Column("email")]
-public string? Email { get; set; }
+    [Column("email")]
+    public string? Email { get; set; }
 
-[Column("phone")]
-public string Phone { get; set; }
+    [Column("phone")]
+    public string Phone { get; set; }
 
-[Column("address_line_1")]
-public string? AddressLine1 { get; set; }
+    [Column("address_line_1")]
+    public string? AddressLine1 { get; set; }
 
-[Column("city")]
-public string? City { get; set; }
+    [Column("city")]
+    public string? City { get; set; }
 
-[Column("state")]
-public string? State { get; set; }
+    [Column("state")]
+    public string? State { get; set; }
 
-[Column("postal_code")]
-public string? PostalCode { get; set; }
+    [Column("postal_code")]
+    public string? PostalCode { get; set; }
 
-[Column("date_of_birth")]
-public DateOnly? DateOfBirth { get; set; }
+    [Column("date_of_birth")]
+    public DateOnly? DateOfBirth { get; set; }
 
-[Column("household_size")]
-public int? HouseholdSize { get; set; }
+    [Column("household_size")]
+    public int? HouseholdSize { get; set; }
 
-[Column("has_other_pets")]
-public bool HasOtherPets { get; set; }
+    [Column("has_other_pets")]
+    public bool HasOtherPets { get; set; }
 
-[Column("adoption_status")]
-public string AdoptionStatus { get; set; }
+    [Column("adoption_status")]
+    public string AdoptionStatus { get; set; }
 
-[Column("created_at")]
-public DateTime CreatedAt { get; set; }
+    [Column("created_at")]
+    public DateTime CreatedAt { get; set; }
 
-[Column("updated_at")]
-public DateTime UpdatedAt { get; set; }
+    [Column("updated_at")]
+    public DateTime UpdatedAt { get; set; }
 }
