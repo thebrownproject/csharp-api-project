@@ -22,8 +22,8 @@ public class AdopterModel : BaseModel
         City = string.Empty;
         State = string.Empty;
         PostalCode = string.Empty;
-        DateOfBirth = DateTime.MinValue;
-        HouseholdSize = 0;
+        DateOfBirth = null;
+        HouseholdSize = null;
         HasOtherPets = false;
         AdoptionStatus = string.Empty;
         CreatedAt = DateTime.MinValue;
@@ -42,7 +42,7 @@ public class AdopterModel : BaseModel
         City = request.City;
         State = request.State;
         PostalCode = request.PostalCode;
-        DateOfBirth = request.DateOfBirth ?? DateTime.MinValue;
+        DateOfBirth = request.DateOfBirth is DateTime date ? DateOnly.FromDateTime(date) : null;
         HouseholdSize = request.HouseholdSize ?? 0;
         HasOtherPets = request.HasOtherPets;
         AdoptionStatus = request.AdoptionStatus;
@@ -78,10 +78,10 @@ public string? State { get; set; }
 public string? PostalCode { get; set; }
 
 [Column("date_of_birth")]
-public DateTime DateOfBirth { get; set; }
+public DateOnly? DateOfBirth { get; set; }
 
 [Column("household_size")]
-public int HouseholdSize { get; set; }
+public int? HouseholdSize { get; set; }
 
 [Column("has_other_pets")]
 public bool HasOtherPets { get; set; }

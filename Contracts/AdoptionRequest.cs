@@ -12,7 +12,7 @@ public class AdoptionRequest
     public required DateTime AdoptionDate { get; set; }
     [Required]
     public required decimal AdoptionFee { get; set; }
-    public DateTime ReturnDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
     public string? ReturnReason { get; set; }
     [AllowedValues(["Active", "Returned", "Cancelled"])]
     public required string AdoptionStatus { get; set; }

@@ -9,12 +9,12 @@ public class AnimalModel : BaseModel
 {
     public AnimalModel() {
         Name = string.Empty;
-        DateOfBirth = DateTime.MinValue;
+        DateOfBirth = null;
         Species = string.Empty;
         Breed = string.Empty;
         FurColour = string.Empty;
         WeightKg = 0;
-        ArrivalDate = DateTime.MinValue;
+        ArrivalDate = DateOnly.MinValue;
         Neutered = false;
         AdoptionStatus = string.Empty;
         BondedWith = Guid.Empty;
@@ -28,12 +28,12 @@ public class AnimalModel : BaseModel
     {
         Id = id;
         Name = request.Name;
-        DateOfBirth = request.DateOfBirth ?? DateTime.MinValue;
+        DateOfBirth = request.DateOfBirth.HasValue ? DateOnly.FromDateTime(request.DateOfBirth.Value) : DateOnly.MinValue;
         Species = request.Species;
         Breed = request.Breed;
         FurColour = request.FurColour;
         WeightKg = request.WeightKg ?? 0;
-        ArrivalDate = request.ArrivalDate;
+        ArrivalDate = DateOnly.FromDateTime(request.ArrivalDate);
         Neutered = request.Neutered;
         AdoptionStatus = request.AdoptionStatus;
         BondedWith = request.BondedWith;
@@ -51,22 +51,22 @@ public class AnimalModel : BaseModel
     public string Name { get; set; }
 
     [Column("date_of_birth")]
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly? DateOfBirth { get; set; }
 
     [Column("species")]
     public string Species { get; set; }
 
     [Column("breed")]
-    public string Breed { get; set; }
+    public string? Breed { get; set; }
 
     [Column("fur_colour")]
-    public string FurColour { get; set; }
+    public string? FurColour { get; set; }
 
     [Column("weight_kg")]
-    public decimal WeightKg { get; set; }
+    public decimal? WeightKg { get; set; }
 
     [Column("arrival_date")]
-    public DateTime ArrivalDate { get; set; }
+    public DateOnly ArrivalDate { get; set; }
 
     [Column("neutered")]
     public bool Neutered { get; set; }
@@ -81,10 +81,10 @@ public class AnimalModel : BaseModel
     public string? RfidTag { get; set; }
 
     [Column("special_needs")]
-    public string SpecialNeeds { get; set; }
+    public string? SpecialNeeds { get; set; }
 
     [Column("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }

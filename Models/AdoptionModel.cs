@@ -13,7 +13,7 @@ public class AdoptionModel : BaseModel
         Id = Guid.Empty;
         AnimalId = Guid.Empty;
         AdopterId = Guid.Empty;
-        AdoptionDate = DateTime.MinValue;
+        AdoptionDate = DateOnly.MinValue;
         AdoptionFee = 0;
         ReturnDate = null;
         ReturnReason = string.Empty;
@@ -29,9 +29,9 @@ public class AdoptionModel : BaseModel
         Id = id;
         AnimalId = request.AnimalId;
         AdopterId = request.AdopterId;
-        AdoptionDate = request.AdoptionDate;
+        AdoptionDate = DateOnly.FromDateTime(request.AdoptionDate);
         AdoptionFee = request.AdoptionFee;
-        ReturnDate = request.ReturnDate;
+        ReturnDate = request.ReturnDate is DateTime d ? DateOnly.FromDateTime(d) : null;
         ReturnReason = request.ReturnReason;
         AdoptionStatus = request.AdoptionStatus;
         Notes = request.Notes;
@@ -49,7 +49,7 @@ public class AdoptionModel : BaseModel
     public Guid AdopterId { get; set; }
 
     [Column("adoption_date")]
-    public DateTime AdoptionDate { get; set; }
+    public DateOnly AdoptionDate { get; set; }
 
     [Column("adoption_fee")]
     public decimal AdoptionFee { get; set; }

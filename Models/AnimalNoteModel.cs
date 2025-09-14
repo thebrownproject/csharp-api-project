@@ -11,7 +11,7 @@ public class AnimalNoteModel : BaseModel
         Id = Guid.Empty;
         AnimalId = Guid.Empty;
         UserId = Guid.Empty;
-        NoteDate = DateTime.MinValue;
+        NoteDate = DateOnly.MinValue;
         NoteContent = string.Empty;
         NoteType = string.Empty;
         CreatedAt = DateTime.MinValue;
@@ -22,7 +22,7 @@ public class AnimalNoteModel : BaseModel
         Id = id;
         AnimalId = request.AnimalId;
         UserId = request.UserId;
-        NoteDate = request.NoteDate;
+        NoteDate = DateOnly.FromDateTime(request.NoteDate);
         NoteContent = request.NoteContent;
         NoteType = request.NoteType;
         CreatedAt = DateTime.UtcNow;
@@ -38,7 +38,7 @@ public class AnimalNoteModel : BaseModel
     public Guid UserId { get; set; }
 
     [Column("note_date")]
-    public DateTime NoteDate { get; set; }
+    public DateOnly NoteDate { get; set; }
 
     [Column("note_content")]
     public string NoteContent { get; set; }
