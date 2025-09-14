@@ -5,9 +5,9 @@ using min_api_project.Contracts;
 namespace min_api_project.Models;
 
 [Table("rfid_log")]
-public class RfidLogTableModel : BaseModel
+public class RfidLogModel : BaseModel
 {
-    public RfidLogTableModel()
+    public RfidLogModel()
     {
         Id = Guid.Empty;
         ScanTime = DateTime.UtcNow;
@@ -17,7 +17,7 @@ public class RfidLogTableModel : BaseModel
         AnimalNote = Guid.Empty;
     }
 
-    public RfidLogTableModel(Guid id, RfidLogRequest request)
+    public RfidLogModel(Guid id, RfidLogRequest request)
     {
         Id = id;
         ScanTime = request.ScanTime ?? DateTime.UtcNow;

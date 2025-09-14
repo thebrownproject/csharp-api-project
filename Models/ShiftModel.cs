@@ -7,8 +7,7 @@ namespace min_api_project.Models;
 [Table("shift")]
 public class ShiftModel : BaseModel
 {
-    public ShiftModel()
-    {
+    public ShiftModel() {
         ShiftId = 0;
         UserId = Guid.Empty;
         ShiftType = string.Empty;
@@ -40,37 +39,37 @@ public class ShiftModel : BaseModel
 
     [PrimaryKey("shift_id")]
     public int ShiftId { get; set; }
-
+    
     [Column("user_id")]
     public Guid UserId { get; set; }
-
+    
     [Column("shift_type")]
     public string ShiftType { get; set; }
-
+    
     [Column("shift_date")]
     public DateOnly ShiftDate { get; set; }
-
+    
     [Column("actual_start")]
     public TimeOnly? ActualStart { get; set; }
-
+    
     [Column("actual_end")]
     public TimeOnly? ActualEnd { get; set; }
-
+    
     [Column("primary_role")]
     public string? PrimaryRole { get; set; }
-
+    
     [Column("duties_performed")]
     public string[]? DutiesPerformed { get; set; }
-
+    
     [Column("status")]
     public string Status { get; set; }
-
+    
     [Column("notes")]
     public string? Notes { get; set; }
-
+    
     [Column("created_at")]
     public DateTime CreatedAt { get; set; }
-
+    
     [Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }
@@ -89,7 +88,7 @@ public class ShiftModel : BaseModel
 //     notes TEXT,
 //     created_at TIMESTAMP DEFAULT NOW(),
 //     updated_at TIMESTAMP DEFAULT NOW(),
-
+    
 //     -- Prevent double-booking
 //     UNIQUE(user_id, shift_date, shift_type)
 // );

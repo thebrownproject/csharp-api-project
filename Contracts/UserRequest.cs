@@ -6,22 +6,20 @@ public class UserRequest
 {
     [Required]
     public required string Email { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Phone { get; set; }
-    public DateTime DateOfBirth { get; set; }
-    public string AddressLine { get; set; }
-    public string City { get; set; }
-    public string State { get; set; }
-    public string PostalCode { get; set; }
-    public string RfidTag { get; set; }
-    public DateTime VolunteerStartDate { get; set; }
-    public DateTime VolunteerEndDate { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? Phone { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    public string? AddressLine { get; set; }
+    public string? City { get; set; }
+    public string? State { get; set; }
+    public string? PostalCode { get; set; }
+    public string? RfidTag { get; set; }
+    public DateTime? VolunteerStartDate { get; set; }
+    public DateTime? VolunteerEndDate { get; set; }
     public bool IsAdmin { get; set; }
     public bool IsActiveVolunteer { get; set; }
-    public string VolunteerNotes { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+    public string? VolunteerNotes { get; set; }
 }
 
 // CREATE TABLE "user" (
