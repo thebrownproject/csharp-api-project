@@ -14,7 +14,7 @@ public class ShiftController : ControllerBase
         [FromServices] Client client
     )
     {
-        ShiftModel shift = new ShiftModel(Guid.Empty, request);
+        ShiftModel shift = new ShiftModel(0, request);
         ModeledResponse<ShiftModel> response = await client.From<ShiftModel>().Insert(shift);
         ShiftModel newShift = response.Models.First();
         return Ok(newShift);
@@ -22,9 +22,9 @@ public class ShiftController : ControllerBase
 
     [HttpGet("{id}")]
     public async Task<IActionResult> OnGetAsync(
-        Guid id, [FromServices] Client client)
+        int id, [FromServices] Client client)
     {
-        ModeledResponse<ShiftModel> response = await client.From<ShiftModel>().Where(i => i.Id == id).Get();
+        ModeledResponse<ShiftModel> response = await client.From<ShiftModel>().Where(i => i.ShiftId == id).Get();
         ShiftModel? shift = response.Models.FirstOrDefault();
         if (shift is null) return NotFound();
         return Ok(shift);
@@ -32,19 +32,19 @@ public class ShiftController : ControllerBase
 
     [HttpPut("{id}")]
     public async Task<IActionResult> OnPutAsync(
-        Guid id, [FromBody] ShiftRequest request, [FromServices] Client client)
+        int id, [FromBody] ShiftRequest request, [FromServices] Client client)
     {
         ShiftModel shift = new ShiftModel(id, request);
-        ModeledResponse<ShiftModel> response = await client.From<ShiftModel>().Where(i => i.Id == id).Update(shift);
+        ModeledResponse<ShiftModel> response = await client.From<ShiftModel>().Where(i => i.ShiftId == id).Update(shift);
         ShiftModel? updatedShift = response.Models.FirstOrDefault();
         if (updatedShift is null) return NotFound();
         return Ok(updatedShift);
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> OnDeleteAsync(Guid id, [FromServices] Client client)
+    public async Task<IActionResult> OnDeleteAsync(int id, [FromServices] Client client)
     {
-        await client.From<ShiftModel>().Where(i => i.Id == id).Delete();
+        await client.From<ShiftModel>().Where(i => i.ShiftId == id).Delete();
         return NoContent();
     }
 }

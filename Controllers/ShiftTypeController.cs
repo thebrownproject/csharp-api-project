@@ -20,31 +20,31 @@ public class ShiftTypeController : ControllerBase
         return Ok(newShiftType);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{typeName}")]
     public async Task<IActionResult> OnGetAsync(
-        Guid id, [FromServices] Client client)
+        string typeName, [FromServices] Client client)
     {
-        ModeledResponse<ShiftTypeModel> response = await client.From<ShiftTypeModel>().Where(i => i.Id == id).Get();
+        ModeledResponse<ShiftTypeModel> response = await client.From<ShiftTypeModel>().Where(i => i.TypeName == typeName).Get();
         ShiftTypeModel? shiftType = response.Models.FirstOrDefault();
         if (shiftType is null) return NotFound();
         return Ok(shiftType);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{typeName}")]
     public async Task<IActionResult> OnPutAsync(
-        Guid id, [FromBody] ShiftTypeRequest request, [FromServices] Client client)
+        string typeName, [FromBody] ShiftTypeRequest request, [FromServices] Client client)
     {
-        ShiftTypeModel shiftType = new ShiftTypeModel(id, request);
-        ModeledResponse<ShiftTypeModel> response = await client.From<ShiftTypeModel>().Where(i => i.Id == id).Update(shiftType);
+        ShiftTypeModel shiftType = new ShiftTypeModel(typeName, request);
+        ModeledResponse<ShiftTypeModel> response = await client.From<ShiftTypeModel>().Where(i => i.TypeName == typeName).Update(shiftType);
         ShiftTypeModel? updatedShiftType = response.Models.FirstOrDefault();
         if (updatedShiftType is null) return NotFound();
         return Ok(updatedShiftType);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> OnDeleteAsync(Guid id, [FromServices] Client client)
+    [HttpDelete("{typeName}")]
+    public async Task<IActionResult> OnDeleteAsync(string typeName, [FromServices] Client client)
     {
-        await client.From<ShiftTypeModel>().Where(i => i.Id == id).Delete();
+        await client.From<ShiftTypeModel>().Where(i => i.TypeName == typeName).Delete();
         return NoContent();
     }
 }
