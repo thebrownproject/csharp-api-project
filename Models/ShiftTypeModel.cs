@@ -1,10 +1,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("shift_type")]
+[Supabase.Postgrest.Attributes.Table("shift_type")]
 public class ShiftTypeModel : BaseModel
 {
     public ShiftTypeModel()
@@ -28,16 +29,16 @@ public class ShiftTypeModel : BaseModel
     [PrimaryKey("type_name")]
     public string TypeName { get; set; }
 
-    [Column("default_start")]
+    [Supabase.Postgrest.Attributes.Column("default_start")]
     public TimeOnly DefaultStart { get; set; }
 
-    [Column("default_end")]
+    [Supabase.Postgrest.Attributes.Column("default_end")]
     public TimeOnly DefaultEnd { get; set; }
 
-    [Column("description")]
+    [Supabase.Postgrest.Attributes.Column("description")]
     public string? Description { get; set; }
 
-    [Column("is_active")]
+    [Supabase.Postgrest.Attributes.Column("is_active")]
     public bool IsActive { get; set; }
 }
 

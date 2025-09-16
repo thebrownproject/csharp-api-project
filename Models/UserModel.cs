@@ -1,10 +1,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("user")]
+[Supabase.Postgrest.Attributes.Table("user")]
 public class UserModel : BaseModel
 {
     public UserModel()
@@ -54,55 +55,55 @@ public class UserModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("email")]
+    [Supabase.Postgrest.Attributes.Column("email")]
     public string Email { get; set; }
 
-    [Column("first_name")]
+    [Supabase.Postgrest.Attributes.Column("first_name")]
     public string? FirstName { get; set; }
 
-    [Column("last_name")]
+    [Supabase.Postgrest.Attributes.Column("last_name")]
     public string? LastName { get; set; }
 
-    [Column("phone")]
+    [Supabase.Postgrest.Attributes.Column("phone")]
     public string? Phone { get; set; }
 
-    [Column("date_of_birth")]
+    [Supabase.Postgrest.Attributes.Column("date_of_birth")]
     public DateOnly DateOfBirth { get; set; }
 
-    [Column("address_line")]
+    [Supabase.Postgrest.Attributes.Column("address_line")]
     public string AddressLine { get; set; }
 
-    [Column("city")]
+    [Supabase.Postgrest.Attributes.Column("city")]
     public string City { get; set; }
 
-    [Column("state")]
+    [Supabase.Postgrest.Attributes.Column("state")]
     public string State { get; set; }
 
-    [Column("postal_code")]
+    [Supabase.Postgrest.Attributes.Column("postal_code")]
     public string PostalCode { get; set; }
 
-    [Column("rfid_tag")]
+    [Supabase.Postgrest.Attributes.Column("rfid_tag")]
     public string RfidTag { get; set; }
 
-    [Column("volunteer_start_date")]
+    [Supabase.Postgrest.Attributes.Column("volunteer_start_date")]
     public DateOnly VolunteerStartDate { get; set; }
 
-    [Column("volunteer_end_date")]
+    [Supabase.Postgrest.Attributes.Column("volunteer_end_date")]
     public DateOnly VolunteerEndDate { get; set; }
 
-    [Column("is_admin")]
+    [Supabase.Postgrest.Attributes.Column("is_admin")]
     public bool IsAdmin { get; set; }
 
-    [Column("is_active_volunteer")]
+    [Supabase.Postgrest.Attributes.Column("is_active_volunteer")]
     public bool IsActiveVolunteer { get; set; }
 
-    [Column("volunteer_notes")]
+    [Supabase.Postgrest.Attributes.Column("volunteer_notes")]
     public string? VolunteerNotes { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }
 

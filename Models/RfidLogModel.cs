@@ -1,10 +1,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("rfid_log")]
+[Supabase.Postgrest.Attributes.Table("rfid_log")]
 public class RfidLogModel : BaseModel
 {
     public RfidLogModel()
@@ -30,19 +31,22 @@ public class RfidLogModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("scan_time")]
+    [Supabase.Postgrest.Attributes.Column("scan_time")]
     public DateTime ScanTime { get; set; }
 
-    [Column("user_id")]
+    [ForeignKey("user_id")]
+    [Supabase.Postgrest.Attributes.Column("user_id")]
     public Guid? UserId { get; set; }
 
-    [Column("animal_id")]
+    [ForeignKey("animal_id")]
+    [Supabase.Postgrest.Attributes.Column("animal_id")]
     public Guid? AnimalId { get; set; }
 
-    [Column("rfid_tag")]
+    [Supabase.Postgrest.Attributes.Column("rfid_tag")]
     public string? RfidTag { get; set; }
 
-    [Column("animal_note")]
+    [ForeignKey("animal_note")]
+    [Supabase.Postgrest.Attributes.Column("animal_note")]
     public Guid? AnimalNote { get; set; }
 }
 

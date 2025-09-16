@@ -1,10 +1,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("shift")]
+[Supabase.Postgrest.Attributes.Table("shift")]
 public class ShiftModel : BaseModel
 {
     public ShiftModel() {
@@ -40,37 +41,39 @@ public class ShiftModel : BaseModel
     [PrimaryKey("shift_id")]
     public int ShiftId { get; set; }
     
-    [Column("user_id")]
+    [ForeignKey("user_id")]
+    [Supabase.Postgrest.Attributes.Column("user_id")]
     public Guid UserId { get; set; }
     
-    [Column("shift_type")]
+    [ForeignKey("shift_type")]
+    [Supabase.Postgrest.Attributes.Column("shift_type")]
     public string ShiftType { get; set; }
     
-    [Column("shift_date")]
+    [Supabase.Postgrest.Attributes.Column("shift_date")]
     public DateOnly ShiftDate { get; set; }
     
-    [Column("actual_start")]
+    [Supabase.Postgrest.Attributes.Column("actual_start")]
     public TimeOnly? ActualStart { get; set; }
     
-    [Column("actual_end")]
+    [Supabase.Postgrest.Attributes.Column("actual_end")]
     public TimeOnly? ActualEnd { get; set; }
     
-    [Column("primary_role")]
+    [Supabase.Postgrest.Attributes.Column("primary_role")]
     public string? PrimaryRole { get; set; }
     
-    [Column("duties_performed")]
+    [Supabase.Postgrest.Attributes.Column("duties_performed")]
     public string[]? DutiesPerformed { get; set; }
     
-    [Column("status")]
+    [Supabase.Postgrest.Attributes.Column("status")]
     public string Status { get; set; }
     
-    [Column("notes")]
+    [Supabase.Postgrest.Attributes.Column("notes")]
     public string? Notes { get; set; }
     
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
     
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }
 

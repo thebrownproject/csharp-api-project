@@ -2,10 +2,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("vet")]
+[Supabase.Postgrest.Attributes.Table("vet")]
 public class VetModel : BaseModel
 {
 
@@ -39,30 +40,30 @@ public class VetModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("title")]
+    [Supabase.Postgrest.Attributes.Column("title")]
     public string Title { get; set; }
 
-    [Column("first_name")]
+    [Supabase.Postgrest.Attributes.Column("first_name")]
     public string FirstName { get; set; }
 
-    [Column("last_name")]
+    [Supabase.Postgrest.Attributes.Column("last_name")]
     public string LastName { get; set; }
 
-    [Column("email")]
+    [Supabase.Postgrest.Attributes.Column("email")]
     public string? Email { get; set; }
 
-    [Column("phone")]
+    [Supabase.Postgrest.Attributes.Column("phone")]
     public string Phone { get; set; }
 
-    [Column("clinic_name")]
+    [Supabase.Postgrest.Attributes.Column("clinic_name")]
     public string? ClinicName { get; set; }
 
-    [Column("clinic_address")]
+    [Supabase.Postgrest.Attributes.Column("clinic_address")]
     public string? ClinicAddress { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }

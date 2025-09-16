@@ -1,10 +1,10 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace min_api_project.Models;
 
-[Table("health_check")]
+[Supabase.Postgrest.Attributes.Table("health_check")]
 public class HealthCheckModel : BaseModel
 {
     public HealthCheckModel()
@@ -51,52 +51,54 @@ public class HealthCheckModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("animal_id")]
+    [ForeignKey("animal_id")]
+    [Supabase.Postgrest.Attributes.Column("animal_id")]
     public Guid AnimalId { get; set; }
 
-    [Column("vet_id")]
+    [ForeignKey("vet_id")]
+    [Supabase.Postgrest.Attributes.Column("vet_id")]
     public Guid VetId { get; set; }
 
-    [Column("check_date")]
+    [Supabase.Postgrest.Attributes.Column("check_date")]
     public DateOnly CheckDate { get; set; }
 
-    [Column("check_type")]
+    [Supabase.Postgrest.Attributes.Column("check_type")]
     public string CheckType { get; set; }
 
-    [Column("weight_kg")]
+    [Supabase.Postgrest.Attributes.Column("weight_kg")]
     public decimal? WeightKg { get; set; }
 
-    [Column("temperature_celsius")]
+    [Supabase.Postgrest.Attributes.Column("temperature_celsius")]
     public decimal? TemperatureCelsius { get; set; }
 
-    [Column("heart_rate")]
+    [Supabase.Postgrest.Attributes.Column("heart_rate")]
     public int? HeartRate { get; set; }
 
-    [Column("examination_notes")]
+    [Supabase.Postgrest.Attributes.Column("examination_notes")]
     public string? ExaminationNotes { get; set; }
 
-    [Column("diagnosis")]
+    [Supabase.Postgrest.Attributes.Column("diagnosis")]
     public string? Diagnosis { get; set; }
 
-    [Column("treatment_given")]
+    [Supabase.Postgrest.Attributes.Column("treatment_given")]
     public string? TreatmentGiven { get; set; }
 
-    [Column("medications_prescribed")]
+    [Supabase.Postgrest.Attributes.Column("medications_prescribed")]
     public string? MedicationsPrescribed { get; set; }
 
-    [Column("follow_up_required")]
+    [Supabase.Postgrest.Attributes.Column("follow_up_required")]
     public bool FollowUpRequired { get; set; }
 
-    [Column("follow_up_date")]
+    [Supabase.Postgrest.Attributes.Column("follow_up_date")]
     public DateOnly? FollowUpDate { get; set; }
 
-    [Column("overall_health_status")]
+    [Supabase.Postgrest.Attributes.Column("overall_health_status")]
     public string OverallHealthStatus { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }
 

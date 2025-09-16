@@ -6,7 +6,7 @@ namespace min_api_project.Models;
 
 
 // Selects the adopters table from the database
-[Table("adopter")]
+[Supabase.Postgrest.Attributes.Table("adopter")]
 // New class for the adopter model inheriting from the BaseModel
 // BaseModel is a class from the Supabase.Postgrest.Models namespace
 public class AdopterModel : BaseModel
@@ -54,45 +54,45 @@ public class AdopterModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("first_name")]
+    [Supabase.Postgrest.Attributes.Column("first_name")]
     public string FirstName { get; set; }
 
-    [Column("last_name")]
+    [Supabase.Postgrest.Attributes.Column("last_name")]
     public string LastName { get; set; }
 
-    [Column("email")]
+    [Supabase.Postgrest.Attributes.Column("email")]
     public string? Email { get; set; }
 
-    [Column("phone")]
+    [Supabase.Postgrest.Attributes.Column("phone")]
     public string Phone { get; set; }
 
-    [Column("address_line_1")]
+    [Supabase.Postgrest.Attributes.Column("address_line_1")]
     public string? AddressLine1 { get; set; }
 
-    [Column("city")]
+    [Supabase.Postgrest.Attributes.Column("city")]
     public string? City { get; set; }
 
-    [Column("state")]
+    [Supabase.Postgrest.Attributes.Column("state")]
     public string? State { get; set; }
 
-    [Column("postal_code")]
+    [Supabase.Postgrest.Attributes.Column("postal_code")]
     public string? PostalCode { get; set; }
 
-    [Column("date_of_birth")]
+    [Supabase.Postgrest.Attributes.Column("date_of_birth")]
     public DateOnly? DateOfBirth { get; set; }
 
-    [Column("household_size")]
+    [Supabase.Postgrest.Attributes.Column("household_size")]
     public int? HouseholdSize { get; set; }
 
-    [Column("has_other_pets")]
+    [Supabase.Postgrest.Attributes.Column("has_other_pets")]
     public bool HasOtherPets { get; set; }
 
-    [Column("adoption_status")]
+    [Supabase.Postgrest.Attributes.Column("adoption_status")]
     public string AdoptionStatus { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }

@@ -1,10 +1,11 @@
 using min_api_project.Contracts;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("animal")]
+[Supabase.Postgrest.Attributes.Table("animal")]
 public class AnimalModel : BaseModel
 {
     public AnimalModel()
@@ -48,48 +49,49 @@ public class AnimalModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("name")]
+    [Supabase.Postgrest.Attributes.Column("name")]
     public string Name { get; set; }
 
-    [Column("date_of_birth")]
+    [Supabase.Postgrest.Attributes.Column("date_of_birth")]
     public DateOnly? DateOfBirth { get; set; }
 
-    [Column("species")]
+    [Supabase.Postgrest.Attributes.Column("species")]
     public string Species { get; set; }
 
-    [Column("breed")]
+    [Supabase.Postgrest.Attributes.Column("breed")]
     public string? Breed { get; set; }
 
-    [Column("fur_colour")]
+    [Supabase.Postgrest.Attributes.Column("fur_colour")]
     public string? FurColour { get; set; }
 
-    [Column("weight_kg")]
+    [Supabase.Postgrest.Attributes.Column("weight_kg")]
     public decimal? WeightKg { get; set; }
 
-    [Column("arrival_date")]
+    [Supabase.Postgrest.Attributes.Column("arrival_date")]
     public DateOnly ArrivalDate { get; set; }
 
-    [Column("neutered")]
+    [Supabase.Postgrest.Attributes.Column("neutered")]
     public bool Neutered { get; set; }
 
-    [Column("adoption_status")]
+    [Supabase.Postgrest.Attributes.Column("adoption_status")]
     public string AdoptionStatus { get; set; }
 
-    [Column("bonded_with")]
+    [ForeignKey("bonded_with")]
+    [Supabase.Postgrest.Attributes.Column("bonded_with")]
     public Guid? BondedWith { get; set; }
 
-    [Column("rfid_tag")]
+    [Supabase.Postgrest.Attributes.Column("rfid_tag")]
     public string? RfidTag { get; set; }
 
-    [Column("special_needs")]
+    [Supabase.Postgrest.Attributes.Column("special_needs")]
     public string? SpecialNeeds { get; set; }
 
-    [Column("description")]
+    [Supabase.Postgrest.Attributes.Column("description")]
     public string? Description { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }

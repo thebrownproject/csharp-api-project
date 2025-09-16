@@ -1,10 +1,11 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
-[Table("animal_note")]
+[Supabase.Postgrest.Attributes.Table("animal_note")]
 public class AnimalNoteModel : BaseModel
 {
     public AnimalNoteModel()
@@ -31,23 +32,24 @@ public class AnimalNoteModel : BaseModel
 
     [PrimaryKey("id")]
     public Guid Id { get; set; }
-
-    [Column("animal_id")]
+    [ForeignKey("animal_id")]
+    [Supabase.Postgrest.Attributes.Column("animal_id")]
     public Guid AnimalId { get; set; }
 
-    [Column("user_id")]
+    [ForeignKey("user_id")]
+    [Supabase.Postgrest.Attributes.Column("user_id")]
     public Guid UserId { get; set; }
 
-    [Column("note_date")]
+    [Supabase.Postgrest.Attributes.Column("note_date")]
     public DateOnly NoteDate { get; set; }
 
-    [Column("note_content")]
+    [Supabase.Postgrest.Attributes.Column("note_content")]
     public string NoteContent { get; set; }
 
-    [Column("note_type")]
+    [Supabase.Postgrest.Attributes.Column("note_type")]
     public string NoteType { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 }
 

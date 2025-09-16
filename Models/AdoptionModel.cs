@@ -1,11 +1,12 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace min_api_project.Models;
 
 
-[Table("adoption")]
+[Supabase.Postgrest.Attributes.Table("adoption")]
 public class AdoptionModel : BaseModel
 {
     // Constructor for the AdoptionModel
@@ -43,34 +44,36 @@ public class AdoptionModel : BaseModel
     [PrimaryKey("id")]
     public Guid Id { get; set; }
 
-    [Column("animal_id")]
+    [ForeignKey("animal_id")]
+    [Supabase.Postgrest.Attributes.Column("animal_id")]
     public Guid AnimalId { get; set; }
 
-    [Column("adopter_id")]
+    [ForeignKey("adopter_id")]
+    [Supabase.Postgrest.Attributes.Column("adopter_id")]
     public Guid AdopterId { get; set; }
 
-    [Column("adoption_date")]
+    [Supabase.Postgrest.Attributes.Column("adoption_date")]
     public DateOnly AdoptionDate { get; set; }
 
-    [Column("adoption_fee")]
+    [Supabase.Postgrest.Attributes.Column("adoption_fee")]
     public decimal AdoptionFee { get; set; }
 
-    [Column("return_date")]
+    [Supabase.Postgrest.Attributes.Column("return_date")]
     public DateOnly? ReturnDate { get; set; }
 
-    [Column("return_reason")]
+    [Supabase.Postgrest.Attributes.Column("return_reason")]
     public string? ReturnReason { get; set; }
 
-    [Column("adoption_status")]
+    [Supabase.Postgrest.Attributes.Column("adoption_status")]
     public string AdoptionStatus { get; set; }
 
-    [Column("notes")]
+    [Supabase.Postgrest.Attributes.Column("notes")]
     public string? Notes { get; set; }
 
-    [Column("created_at")]
+    [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
 
-    [Column("updated_at")]
+    [Supabase.Postgrest.Attributes.Column("updated_at")]
     public DateTime UpdatedAt { get; set; }
 }
 
