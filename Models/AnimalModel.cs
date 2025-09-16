@@ -75,7 +75,7 @@ public class AnimalModel : BaseModel
 
     [Supabase.Postgrest.Attributes.Column("adoption_status")]
     public string AdoptionStatus { get; set; }
-
+    
     [ForeignKey("bonded_with")]
     [Supabase.Postgrest.Attributes.Column("bonded_with")]
     public Guid? BondedWith { get; set; }

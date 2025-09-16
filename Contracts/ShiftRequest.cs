@@ -6,12 +6,13 @@ public class ShiftRequest
 {
     [Required]
     public required Guid UserId { get; set; }
+    [AllowedValues(["Morning", "Afternoon", "Evening", "Night"])]
     [Required]
     public required string ShiftType { get; set; }
     [Required]
     public required DateTime ShiftDate { get; set; }
-    public TimeOnly? ActualStart { get; set; }
-    public TimeOnly? ActualEnd { get; set; }
+    public TimeSpan? ActualStart { get; set; } = new TimeSpan(0, 0, 0);
+    public TimeSpan? ActualEnd { get; set; } = new TimeSpan(0, 0, 0);
     public string? PrimaryRole { get; set; }
     public string[]? DutiesPerformed { get; set; }
     [AllowedValues(["Scheduled", "In Progress", "Completed", "No Show", "Cancelled"])]

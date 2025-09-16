@@ -53,10 +53,10 @@ public class ShiftModel : BaseModel
     public DateOnly ShiftDate { get; set; }
     
     [Supabase.Postgrest.Attributes.Column("actual_start")]
-    public TimeOnly? ActualStart { get; set; }
+    public TimeSpan? ActualStart { get; set; }
     
     [Supabase.Postgrest.Attributes.Column("actual_end")]
-    public TimeOnly? ActualEnd { get; set; }
+    public TimeSpan? ActualEnd { get; set; }
     
     [Supabase.Postgrest.Attributes.Column("primary_role")]
     public string? PrimaryRole { get; set; }

@@ -1,7 +1,7 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using min_api_project.Contracts;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace min_api_project.Models;
 
 

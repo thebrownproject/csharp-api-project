@@ -25,7 +25,6 @@ public class HealthCheckModel : BaseModel
         FollowUpDate = null;
         OverallHealthStatus = string.Empty;
         CreatedAt = DateTime.MinValue;
-        UpdatedAt = DateTime.MinValue;
     }
 
     public HealthCheckModel(Guid id, HealthCheckRequest request)
@@ -33,7 +32,7 @@ public class HealthCheckModel : BaseModel
         Id = id;
         AnimalId = request.AnimalId;
         VetId = request.VetId;
-        CheckDate = DateOnly.FromDateTime(request.CheckDate);
+        CheckDate = request.CheckDate;
         CheckType = request.CheckType;
         WeightKg = request.WeightKg;
         TemperatureCelsius = request.TemperatureCelsius;
@@ -46,7 +45,6 @@ public class HealthCheckModel : BaseModel
         FollowUpDate = request.FollowUpDate.HasValue ? DateOnly.FromDateTime(request.FollowUpDate.Value) : null;
         OverallHealthStatus = request.OverallHealthStatus;
         CreatedAt = DateTime.UtcNow;
-        UpdatedAt = DateTime.UtcNow;
     }
     [PrimaryKey("id")]
     public Guid Id { get; set; }
@@ -97,9 +95,6 @@ public class HealthCheckModel : BaseModel
 
     [Supabase.Postgrest.Attributes.Column("created_at")]
     public DateTime CreatedAt { get; set; }
-
-    [Supabase.Postgrest.Attributes.Column("updated_at")]
-    public DateTime UpdatedAt { get; set; }
 }
 
 // CREATE TABLE health_check (

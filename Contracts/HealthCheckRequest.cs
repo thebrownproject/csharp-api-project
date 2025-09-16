@@ -8,7 +8,7 @@ public class HealthCheckRequest
     public required Guid AnimalId { get; set; }
     [Required]
     public required Guid VetId { get; set; }
-    public DateTime CheckDate { get; set; } = DateTime.Today;
+    public DateOnly CheckDate { get; set; } = DateOnly.FromDateTime(DateTime.Today);
     [Required]
     public required string CheckType { get; set; }
     public decimal? WeightKg { get; set; }
