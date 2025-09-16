@@ -7,9 +7,11 @@ public class ShiftTypeRequest
     [Required]
     public required string TypeName { get; set; }
     [Required]
-    public required TimeOnly DefaultStart { get; set; }
+    [RegularExpression(@"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$", ErrorMessage = "Time must be in HH:MM:SS format")]
+    public required TimeSpan DefaultStart { get; set; } = new TimeSpan(0, 0, 0);
     [Required]
-    public required TimeOnly DefaultEnd { get; set; }
+    [RegularExpression(@"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$", ErrorMessage = "Time must be in HH:MM:SS format")]
+    public required TimeSpan DefaultEnd { get; set; } = new TimeSpan(0, 0, 0);
     public string? Description { get; set; }
     public bool IsActive { get; set; } = true;
 }

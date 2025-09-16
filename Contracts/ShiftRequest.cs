@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using Swashbuckle.AspNetCore.Annotations;
 namespace min_api_project.Contracts;
 
 public class ShiftRequest
@@ -11,7 +11,9 @@ public class ShiftRequest
     public required string ShiftType { get; set; }
     [Required]
     public required DateTime ShiftDate { get; set; }
+    [RegularExpression(@"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$", ErrorMessage = "Time must be in HH:MM:SS format")]
     public TimeSpan? ActualStart { get; set; } = new TimeSpan(0, 0, 0);
+    [RegularExpression(@"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$", ErrorMessage = "Time must be in HH:MM:SS format")]
     public TimeSpan? ActualEnd { get; set; } = new TimeSpan(0, 0, 0);
     public string? PrimaryRole { get; set; }
     public string[]? DutiesPerformed { get; set; }

@@ -15,6 +15,7 @@ public class ShiftTypeController : ControllerBase
     )
     {
         ShiftTypeModel shiftType = new ShiftTypeModel(request.TypeName, request);
+        // Console.WriteLine(shiftType);
         ModeledResponse<ShiftTypeModel> response = await client.From<ShiftTypeModel>().Insert(shiftType);
         ShiftTypeModel newShiftType = response.Models.First();
         return Ok(newShiftType);

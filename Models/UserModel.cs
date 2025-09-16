@@ -52,7 +52,7 @@ public class UserModel : BaseModel
         UpdatedAt = DateTime.UtcNow;
     }
 
-    [PrimaryKey("id")]
+    [PrimaryKey("id", true)]
     public Guid Id { get; set; }
 
     [Supabase.Postgrest.Attributes.Column("email")]

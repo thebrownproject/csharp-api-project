@@ -5,6 +5,8 @@ namespace min_api_project.Contracts;
 public class UserRequest
 {
     [Required]
+    public required Guid Id { get; set; }
+    [Required]
     public required string Email { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }

@@ -11,8 +11,8 @@ public class ShiftTypeModel : BaseModel
     public ShiftTypeModel()
     {
         TypeName = string.Empty;
-        DefaultStart = TimeOnly.MinValue;
-        DefaultEnd = TimeOnly.MinValue;
+        DefaultStart = TimeSpan.MinValue;
+        DefaultEnd = TimeSpan.MinValue;
         Description = string.Empty;
         IsActive = true;
     }
@@ -26,14 +26,14 @@ public class ShiftTypeModel : BaseModel
         IsActive = request.IsActive;
     }
 
-    [PrimaryKey("type_name")]
+    [PrimaryKey("type_name", true)]
     public string TypeName { get; set; }
 
     [Supabase.Postgrest.Attributes.Column("default_start")]
-    public TimeOnly DefaultStart { get; set; }
+    public TimeSpan DefaultStart { get; set; }
 
     [Supabase.Postgrest.Attributes.Column("default_end")]
-    public TimeOnly DefaultEnd { get; set; }
+    public TimeSpan DefaultEnd { get; set; }
 
     [Supabase.Postgrest.Attributes.Column("description")]
     public string? Description { get; set; }

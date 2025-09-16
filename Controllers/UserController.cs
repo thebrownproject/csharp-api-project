@@ -14,7 +14,7 @@ public class UserController : ControllerBase
         [FromServices] Client client
     )
     {
-        UserModel user = new UserModel(Guid.Empty, request);
+        UserModel user = new UserModel(request.Id, request);
         ModeledResponse<UserModel> response = await client.From<UserModel>().Insert(user);
         UserModel newUser = response.Models.First();
         return Ok(newUser);
